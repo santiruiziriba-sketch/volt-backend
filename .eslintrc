@@ -10,5 +10,24 @@
   },
   "rules": {
     "no-console": "off",
+    "no-underscore-dangle": [
+      "error",
+      {
+        "allow": ["_id"],
+      },
+    ],
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "always",
+      },
+    ],
+    "no-unused-vars": [
+      "error",
+      {
+        "argsIgnorePattern": "^_",
+      },
+    ],
   },
 }

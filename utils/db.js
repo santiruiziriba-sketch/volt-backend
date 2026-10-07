@@ -1,13 +1,17 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const connectDatabase = () => {
+  const mongoUri = process.env.NODE_ENV === 'production'
+    ? process.env.MONGO_URI
+    : 'mongodb://127.0.0.1:27017/volt';
+
   mongoose
-    .connect("mongodb://127.0.0.1:27017/volt")
+    .connect(mongoUri)
     .then(() => {
-      console.log("Conectado a MongoDB");
+      console.log('Conectado a MongoDB');
     })
     .catch((error) => {
-      console.error("Error al conectar a MongoDB:", error);
+      console.error('Error al conectar a MongoDB:', error.message);
     });
 };
 

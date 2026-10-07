@@ -1,5 +1,5 @@
-import mongoose from "mongoose";
-import validator from "validator";
+import mongoose from 'mongoose';
+import validator from 'validator';
 
 const exerciseSchema = new mongoose.Schema(
   {
@@ -30,7 +30,7 @@ const exerciseSchema = new mongoose.Schema(
       required: true,
       validate: {
         validator: validator.isURL,
-        message: "La imagen debe ser una URL válida",
+        message: 'La imagen debe ser una URL válida',
       },
     },
 
@@ -80,10 +80,10 @@ const routineSchema = new mongoose.Schema({
 
   owner: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "user",
+    ref: 'user',
     required: true,
     select: false,
   },
 });
 
-export default mongoose.model("routine", routineSchema);
+export default mongoose.model('routine', routineSchema);

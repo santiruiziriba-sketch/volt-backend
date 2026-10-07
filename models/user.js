@@ -1,5 +1,5 @@
-import mongoose from "mongoose";
-import validator from "validator";
+import mongoose from 'mongoose';
+import validator from 'validator';
 
 const userSchema = new mongoose.Schema({
   email: {
@@ -10,7 +10,7 @@ const userSchema = new mongoose.Schema({
     trim: true,
     validate: {
       validator: validator.isEmail,
-      message: "El email debe tener un formato válido",
+      message: 'El email debe tener un formato válido',
     },
   },
 
@@ -29,4 +29,4 @@ const userSchema = new mongoose.Schema({
   },
 });
 
-export default mongoose.model("user", userSchema);
+export default mongoose.model('user', userSchema);

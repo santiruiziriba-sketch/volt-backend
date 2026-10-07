@@ -1,10 +1,12 @@
-import User from "../models/user.js";
+import User from '../models/user.js';
 
-export const getCurrentUser = (req, res) => {
+const getCurrentUser = (req, res, next) => {
   User.findById(req.user._id)
     .then((user) => {
       if (!user) {
-        return res.status(404).send({ message: "Usuario no encontrado" });
+        return res.status(404).send({
+          message: 'Usuario no encontrado',
+        });
       }
 
       return res.send({
@@ -12,7 +14,7 @@ export const getCurrentUser = (req, res) => {
         name: user.name,
       });
     })
-    .catch((error) => {
-      return res.status(500).send({ message: "Error del servidor", error });
-    });
+    .catch(next);
 };
+
+export default getCurrentUser;

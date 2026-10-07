@@ -1,9 +1,9 @@
-import fs from "fs";
+import fs from 'fs';
 
 const requestLogger = (req, res, next) => {
   const startTime = Date.now();
 
-  res.on("finish", () => {
+  res.on('finish', () => {
     const log = {
       timestamp: new Date().toISOString(),
       method: req.method,
@@ -12,9 +12,9 @@ const requestLogger = (req, res, next) => {
       duration: `${Date.now() - startTime}ms`,
     };
 
-    fs.appendFile("request.log", `${JSON.stringify(log)}\n`, (error) => {
+    fs.appendFile('request.log', `${JSON.stringify(log)}\n`, (error) => {
       if (error) {
-        console.error("Error al escribir request.log:", error);
+        console.error('Error al escribir request.log:', error);
       }
     });
   });
